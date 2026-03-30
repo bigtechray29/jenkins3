@@ -1,3 +1,4 @@
+/* Declarative pipeline for job jenkins4 — Script Path: Jenkinsfile (repo root) */
 /*
  * Git webhook (GitHub, GitLab, etc.):
  * 1. Install Jenkins plugin: "Generic Webhook Trigger".
