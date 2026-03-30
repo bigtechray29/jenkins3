@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars (gitignored) and adjust.
+# aws_region      = "us-east-1"
+# project_name    = "my-app"
+# bucket_name_prefix = "my-app-static"
