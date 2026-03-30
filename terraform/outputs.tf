@@ -3,6 +3,16 @@ output "s3_bucket_name" {
   value       = aws_s3_bucket.site.bucket
 }
 
+output "website_endpoint" {
+  description = "S3 static website host (HTTP). Open in a browser after first deploy."
+  value       = aws_s3_bucket_website_configuration.site.website_endpoint
+}
+
+output "website_url" {
+  description = "Full HTTP URL for the static site (no TLS at edge; use CloudFront for HTTPS)."
+  value       = "http://${aws_s3_bucket_website_configuration.site.website_endpoint}"
+}
+
 output "aws_region" {
   description = "Region where the bucket lives; use as Jenkins parameter AWS_REGION."
   value       = var.aws_region
