@@ -1,5 +1,31 @@
+/*
+ * Git webhook (GitHub, GitLab, etc.):
+ * 1. Install Jenkins plugin: "Generic Webhook Trigger".
+ * 2. In the Git host: add a webhook POST on push to:
+ *    http://YOUR_JENKINS/generic-webhook-trigger/invoke?token=jenkins4-git-webhook
+ *    GitHub: Settings → Webhooks → application/json → "Just the push event".
+ * 3. Token must match `token` in triggers below (change both if you rotate it).
+ * Native GitHub alternative (no plugin in Jenkinsfile): job → "GitHub hook trigger for GITScm polling"
+ * and webhook URL http://YOUR_JENKINS/github-webhook/
+ */
 pipeline {
     agent any
+
+    triggers {
+        GenericTrigger(
+            causeString: 'Git webhook $ref',
+            genericVariables: [
+                [key: 'ref', value: '$.ref', defaultValue: ''],
+                [key: 'after', value: '$.after', defaultValue: ''],
+            ],
+            regexpFilterText: '$ref',
+            regexpFilterExpression: '^refs/heads/(main|master)$',
+            printContributedVariables: true,
+            printPostContent: false,
+            silentResponse: false,
+            token: 'jenkins4-git-webhook'
+        )
+    }
 
     parameters {
         string(name: 'S3_BUCKET', defaultValue: '', description: 'S3 bucket name from Terraform output s3_bucket_name (no s3:// prefix)')
