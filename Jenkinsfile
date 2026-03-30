@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'S3_BUCKET', defaultValue: '', description: 'S3 bucket name from Terraform output s3_bucket_name (no s3:// prefix)')
-        string(name: 'AWS_REGION', defaultValue: 'us-west-1', description: 'AWS region for the bucket')
+        string(name: 'AWS_REGION', defaultValue: 'eu-west-1', description: 'AWS region for the bucket')
         string(
             name: 'AWS_CREDENTIALS_ID',
             defaultValue: 'aws-deployment-creds',

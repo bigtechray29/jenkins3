@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "AWS region for the S3 bucket and IAM resources."
   type        = string
-  default     = "us-west-1"
+  default     = "eu-west-1"
 }
 
 variable "project_name" {
