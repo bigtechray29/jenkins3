@@ -6,7 +6,7 @@ pipeline {
         string(name: 'AWS_REGION', defaultValue: 'eu-west-1', description: 'AWS region for the bucket')
         string(
             name: 'AWS_CREDENTIALS_ID',
-            defaultValue: 'aws-deployment-creds',
+            defaultValue: 'Jenkins4',
             description: 'Jenkins credential ID: kind "Username with password" — username = Access Key ID, password = Secret Access Key'
         )
         string(name: 'SOURCE_DIR', defaultValue: 'deploy', description: 'Folder in the repo synced to the bucket root')
